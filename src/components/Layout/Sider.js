@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Icon, Switch } from 'antd'
 import styles from './Layout.less'
 import { config } from '../../utils'
+import lang from '../../utils/lang'
 import Menus from './Menu'
 
 const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, changeOpenKeys, menu }) => {
@@ -14,16 +15,17 @@ const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, chang
     navOpenKeys,
     changeOpenKeys,
   }
+  const { l } = lang
   return (
     <div>
       <div className={styles.logo}>
         <img alt={'logo'} src={config.logo} />
-        {siderFold ? '' : <span>{config.name}</span>}
+        {siderFold ? '' : <span>{l('productName')}</span>}
       </div>
       <Menus {...menusProps} />
       {!siderFold ? <div className={styles.switchtheme}>
-        <span><Icon type="bulb" />Switch Theme</span>
-        <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
+        <span><Icon type="bulb" />{l('Switch Theme')}</span>
+        <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren={l('Dark')} unCheckedChildren={l('Light')} />
       </div> : ''}
     </div>
   )

@@ -4,6 +4,7 @@ import { connect } from 'dva'
 import { Button, Row, Form, Input } from 'antd'
 import { config } from '../../utils'
 import styles from './index.less'
+import { l } from '../../utils/lang'
 
 const FormItem = Form.Item
 
@@ -25,12 +26,11 @@ const Login = ({
       dispatch({ type: 'login/login', payload: values })
     })
   }
-
   return (
     <div className={styles.form}>
       <div className={styles.logo}>
         <img alt={'logo'} src={config.logo} />
-        <span>{config.name}</span>
+        <span>{l('productName')}</span>
       </div>
       <form>
         <FormItem hasFeedback>

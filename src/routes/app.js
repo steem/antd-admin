@@ -7,9 +7,10 @@ import { Helmet } from 'react-helmet'
 import '../themes/index.less'
 import './app.less'
 import NProgress from 'nprogress'
-const { prefix } = config
-
+import lang from '../utils/lang'
+const { prefix, language } = config
 const { Header, Bread, Footer, Sider, styles } = Layout
+
 let lastHref
 
 const App = ({ children, location, dispatch, app, loading }) => {
@@ -17,6 +18,7 @@ const App = ({ children, location, dispatch, app, loading }) => {
   const href = window.location.href
 
   if (lastHref !== href) {
+    lang.load(language, window.location.pathname)
     NProgress.start()
     if (!loading.global) {
       NProgress.done()
@@ -70,11 +72,12 @@ const App = ({ children, location, dispatch, app, loading }) => {
   }
 
   const { iconFontJS, iconFontCSS, logo } = config
+  const { l } = lang
 
   return (
     <div>
       <Helmet>
-        <title>ANTD ADMIN</title>
+        <title>{l('productName')}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href={logo} type="image/x-icon" />
         {iconFontJS && <script src={iconFontJS}></script>}

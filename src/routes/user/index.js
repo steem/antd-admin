@@ -6,6 +6,7 @@ import { Row, Col, Button, Popconfirm } from 'antd'
 import List from './List'
 import Filter from './Filter'
 import Modal from './Modal'
+import { l } from '../../utils/lang'
 
 const User = ({ location, dispatch, user, loading }) => {
   const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = user
@@ -132,7 +133,7 @@ const User = ({ location, dispatch, user, loading }) => {
            <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
              <Col>
                {`Selected ${selectedRowKeys.length} items `}
-               <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
+               <Popconfirm title={l('Are you sure delete these items?')} placement="left" onConfirm={handleDeleteItems}>
                  <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
                </Popconfirm>
              </Col>
